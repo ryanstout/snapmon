@@ -2,9 +2,20 @@
 puts "Testing install"
 
 begin
-	require File.expand_path('../../../../config/boot',  __FILE__)
-	require 'rails_generator'
-	require 'rails_generator/scripts/generate'
+	# require File.expand_path('../../../../config/boot',  __FILE__)
+	# require 'rails_generator'
+	# require 'rails_generator/scripts/generate'
+
+	unless Kernel.const_defined?('RAILS_ROOT')
+		Kernel.const_set('RAILS_ROOT', File.join(File.dirname(__FILE__), '..', '..', '..'))
+	end
+
+	if (File.exists?(RAILS_ROOT) && File.exists?(File.join(RAILS_ROOT, 'app')))
+		require "#{RAILS_ROOT}/config/boot"
+		require "#{RAILS_ROOT}/config/environment"
+		require 'rails_generator'
+		require 'rails_generator/scripts/generate'
+	end
 
 	Rails::Generator::Scripts::Generate.new.run(['snapmon_config'])
 rescue Exception => e
