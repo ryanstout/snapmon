@@ -19,8 +19,7 @@ begin
 	
 	puts "Loaded reqs"
 
-	ARGV = ['snapmon_config']
-	Rails::Generator::Scripts::Generate.new.run(['snapmon_config'])
+	# Rails::Generator::Scripts::Generate.new.run(['snapmon_config'])
 	
 	puts "Ran"
 rescue Exception => e
