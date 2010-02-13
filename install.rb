@@ -2,6 +2,7 @@
 puts "Testing install"
 
 begin
+	require File.expand_path('../../../../config/boot',  __FILE__)
 	require 'rails_generator'
 	require 'rails_generator/scripts/generate'
 
