@@ -1,0 +1,79 @@
+# SnapMon.com plugin configuration file
+
+---
+
+# ============================== API KEY ===============================
+# The API Key allows your rails app to update your account, if you lose
+# your key, you can retrieve it from the website http://www.snapmon.com/
+api-key: <%= api_key %>
+
+
+# =========================== CHECKS ENABLED ==============================
+# While you are still developing the site and moving it to production, you
+# will want to have this set to false, the once everything is ready to go,
+# you can change it to true and when in production, the site will be monitored
+enabled: false
+
+
+# ====================== CHECKS AND NOTIFICATIONS ========================
+# Below are the options for the checks and notifications, each url on the site
+# you want to monitor can be listed as a check.  Checks can also have requirements
+# such as a certian response code, or a string be found on the  page.
+#
+# All checks need to have notification options specified.  This is who should be 
+# alerted when the check goes down.  See below for more details.
+checks:
+  
+  # The name of the check is the only required option.  After enabling, if you change
+  # the name, another check will be created and the existing check should be deleted
+  # on the web site (http://www.snapmon.com/)
+  - name: Snapmon
+  
+    # The interval is the number of minutes between pings (or http requests) to the server
+    # Valid values are 1,5,20,30,60
+    interval: 5
+    
+    # The url is not required, if it is not specified, then the domain of the first requeste
+    # on the site in production will be used as the domain, and an internal url to the plugin
+    # will be used.  The internal url (/mon) also can relay information about the database
+    # and other possible sources of downtime
+    url: http://<%= domain %>/snapmon
+    
+    # Requirements are optional and let you check that more than just the page is responding.
+    # The three type of checks are String, Response Code, and Redirect To
+    # Examples are shown commented out below
+    # requirements:
+    #   - type: string
+    #     text: OK
+    #   - type: response_code
+    #     code: 200
+    #   - type: redirects_to
+    #     url: http://www.example.com/login
+
+
+    # The notify section is required, there are 4 notification options, email, sms, gtalk, or aim.
+    # Any option specified will be used as a contact option when the site goes down
+    notify:
+<% contacts_to_use.each do |contact| %>
+      - name: <%= contact[:name] %>
+        sms: <%= contact[:sms] ? 'true' : 'false' %>
+        email: <%= contact[:email] ? 'true' : 'false' %>
+        aim: <%= contact[:aim] ? 'true' : 'false' %>
+        gtalk: <%= contact[:gtalk] ? 'true' : 'false' %>
+
+<% end %>
+        
+
+    # Enable if you don't want to be alerted the first time a server check fails, the value is the
+    # number of checks that should fail before you're alerted
+    notify_after: 2
+    
+    # If you wish, you can be alerted every so often while a host is down.  The notify_every option
+    # lets you specify how often you wish to be alerted (in number of checks)
+    # notify_every: 4
+
+    # Set notify_when_back_up if you would like to be alerted when the server comes back up
+    notify_when_back_up: false
+
+    
+    

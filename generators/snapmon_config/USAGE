@@ -1,0 +1,6 @@
+Description:
+    Asks a series of questions and sets up a snapmon.yml file that is used to setup an app monitor on Snapmon.com
+
+Example:
+    ./script/generate snapmon_config
+

@@ -1,0 +1,13 @@
+SnapMon
+=======
+
+The snapmon plugin makes it easy to make sure your application is being monitored.  When you install the plugin, it will ask you a series of questions on who should be notified when the plugin goes down
+
+
+Example
+=======
+
+Example goes here.
+
+
+Copyright (c) 2010 Ryan Stout, released under the MIT license
