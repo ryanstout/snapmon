@@ -16,8 +16,12 @@ begin
 		require 'rails_generator'
 		require 'rails_generator/scripts/generate'
 	end
+	
+	puts "Loaded reqs"
 
 	Rails::Generator::Scripts::Generate.new.run(['snapmon_config'])
+	
+	puts "Ran"
 rescue Exception => e
-	puts e.inspect
+	puts "Error: " + e.inspect
 end
