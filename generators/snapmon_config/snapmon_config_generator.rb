@@ -27,7 +27,7 @@ class SnapmonConfigGenerator < Rails::Generator::Base
 		puts bold("Do you have a Snapmon Account?")
 		print "[Y/n]: "
 		
-		has_account = !['n', 'no', 'false'].include?(gets.strip.downcase)
+		has_account = !['n', 'no', 'false'].include?(STDIN.gets.strip.downcase)
 		
 		if !has_account
 			puts ""
