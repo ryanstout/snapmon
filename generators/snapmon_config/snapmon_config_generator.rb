@@ -33,7 +33,7 @@ class SnapmonConfigGenerator < Rails::Generator::Base
 			puts ""
 			puts "First you should sign up for a Snapmon account at http://www.snapmon.com/"
 			puts "Once you have signed up, press enter to resume"
-			gets
+			STDIN.gets
 			
 			# recurse
 			load_api_key
@@ -42,13 +42,13 @@ class SnapmonConfigGenerator < Rails::Generator::Base
 		puts ""
 		puts "Enter your login e-mail and password: "
 		puts "Email: "
-		email = gets.strip
+		email = STDIN.gets.strip
 		puts "Password:"
 		# Disable echo for password input
 		begin ; system "stty -echo" ; rescue ; end
 
 		# read password
-		password = gets.strip
+		password = STDIN.gets.strip
 
 		# re-enable password
 		begin ; system "stty echo" ; rescue ; end
@@ -71,7 +71,7 @@ class SnapmonConfigGenerator < Rails::Generator::Base
 		puts ""
 		puts "What is the domain for this site? (example: www.google.com)"
 		
-		self.domain = gets.strip
+		self.domain = STDIN.gets.strip
 		
 		if self.domain.blank? || self.domain[/\//]
 			puts ""
@@ -93,7 +93,7 @@ class SnapmonConfigGenerator < Rails::Generator::Base
 		puts "Choose by number, seperate with commas (ex:  1,4)"
 		puts "Or type 'new' to add a new contact"
 		
-		contact_ids = gets.strip
+		contact_ids = STDIN.gets.strip
 		
 		if contact_ids == 'new'
 			new_contact
@@ -115,7 +115,7 @@ class SnapmonConfigGenerator < Rails::Generator::Base
 		name = nil
 		loop do
 			puts "Enter the name of the contact: "
-			name = gets.strip
+			name = STDIN.gets.strip
 			
 			if name.blank?
 				puts "You must enter a contacts name"
@@ -127,19 +127,19 @@ class SnapmonConfigGenerator < Rails::Generator::Base
 		
 		puts ""
 		puts "Enter #{name}'s e-mail (or blank)"
-		email = gets.strip
+		email = STDIN.gets.strip
 		
 		puts ""
 		puts "Enter #{name}'s SMS Number (or blank)"
-		sms_number = gets.strip
+		sms_number = STDIN.gets.strip
 		
 		puts ""
 		puts "Enter #{name}'s AIM (or blank)"
-		aim = gets.strip
+		aim = STDIN.gets.strip
 		
 		puts ""
 		puts "Enter #{name}'s Google Talk (or blank)"
-		gtalk = gets.strip
+		gtalk = STDIN.gets.strip
 		
 		result = http_post("http://#{SERVER}/contacts.js", {:api => self.api_key, 'config' => '1', 'contact[name]' => name, 'contact[email]' => email, 'contact[sms_number]' => sms_number, 'contact[aim]' => aim, 'contact[gtalk]' => gtalk})
 		
