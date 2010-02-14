@@ -1,11 +1,6 @@
 # When the SnapMon plugin is installed run the snapmon_config generator
-puts "Testing install"
-
 begin
-	# require File.expand_path('../../../../config/boot',  __FILE__)
-	# require 'rails_generator'
-	# require 'rails_generator/scripts/generate'
-
+	# First have to load up rails
 	unless Kernel.const_defined?('RAILS_ROOT')
 		Kernel.const_set('RAILS_ROOT', File.join(File.dirname(__FILE__), '..', '..', '..'))
 	end
@@ -17,11 +12,9 @@ begin
 		require 'rails_generator/scripts/generate'
 	end
 	
-	puts "Loaded reqs"
-
+	# Run the generator
 	Rails::Generator::Scripts::Generate.new.run(['snapmon_config'])
 	
-	puts "Ran"
 rescue Exception => e
-	puts "Error: " + e.inspect
+	puts "The following error ocurred: " + e.inspect
 end
