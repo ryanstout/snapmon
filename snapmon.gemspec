@@ -16,7 +16,8 @@ Gem::Specification.new do |s|
     "README"
   ]
   s.files = [
-    "MIT-LICENSE",
+    ".gitignore",
+     "MIT-LICENSE",
      "README",
      "Rakefile",
      "VERSION",
@@ -30,8 +31,6 @@ Gem::Specification.new do |s|
      "lib/snapmon.rb",
      "lib/snapmon/recipes.rb",
      "lib/snapmon_setup.rb",
-     "pkg/snapmon-0.0.0.gem",
-     "pkg/snapmon-0.0.1.gem",
      "recipes/snapmon.rb",
      "snapmon.gemspec",
      "tasks/snapmon_tasks.rake",
