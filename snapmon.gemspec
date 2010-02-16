@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
      "generators/snapmon_config/templates/snapmon.yml",
      "init.rb",
      "install.rb",
+     "lib/capistrano.rb",
      "lib/snapmon.rb",
      "lib/snapmon/recipes.rb",
      "lib/snapmon_setup.rb",
