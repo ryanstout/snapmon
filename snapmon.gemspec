@@ -32,9 +32,9 @@ Gem::Specification.new do |s|
      "lib/snapmon.rb",
      "lib/snapmon/recipes.rb",
      "lib/snapmon_setup.rb",
+     "lib/tasks/snapmon_tasks.rake",
      "recipes/snapmon.rb",
      "snapmon.gemspec",
-     "tasks/snapmon_tasks.rake",
      "test/snapmon_test.rb",
      "test/test_helper.rb",
      "uninstall.rb"
