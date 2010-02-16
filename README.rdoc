@@ -6,16 +6,22 @@ The snapmon plugin makes it easy to make sure your application is being monitore
 == Install
 
 
-As a plugin:
+== As a plugin
 
   script/plugin install git://github.com/ryanstout/snapmon.git
 
-As a gem:
+== As a gem:
+
+Place the following in your environment.rb file:
 
   config.gem 'snapmon'
 
+Then run:
 
-=== Capistrano
+  rake gems:install
+  script/generate snapmon_config
+
+==== Capistrano
 To automatically push your config settings add the following to your deploy.rb
 
   require 'snapmon/recipes'
