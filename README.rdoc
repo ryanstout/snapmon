@@ -1,6 +1,5 @@
 = SnapMon
 
-
 The snapmon plugin makes it easy to make sure your application is being monitored.  When you install the plugin, it will ask you a series of questions on who should be notified when the plugin goes down.  It will then setup a snapmon.yml file in /config.  You can further customize your monitoring from there.
 
 == Install
@@ -8,7 +7,11 @@ The snapmon plugin makes it easy to make sure your application is being monitore
 
 == As a plugin
 
+Run the following in the command line in your projects root directory:
+
   script/plugin install git://github.com/ryanstout/snapmon.git
+
+The script will then walk you through setting up a snapmon.conf file, which will contain settings on who to notify when your application goes down.
 
 == As a gem:
 
@@ -25,8 +28,6 @@ Then run:
 To automatically push your config settings add the following to your deploy.rb
 
   require 'snapmon/recipes'
-
-Otherwise you can run rake setup_monitor
 
 Each time you deploy (using Capistrano), your configuration will be updated on snapmon.com
 
