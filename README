@@ -12,7 +12,15 @@ script/plugin install git://github.com/ryanstout/snapmon.git
 
 As a gem:
 
-config.gem 'snapmon', 
+config.gem 'snapmon'
+
+
+Capistrano
+To automatically push your config settings add the following to your deploy.rb
+
+require 'snapmon/recipes'
+
+Otherwise you can run rake setup_monitor
 
 Each time you deploy (using Capistrano), your configuration will be updated on snapmon.com
 
