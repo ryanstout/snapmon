@@ -28,6 +28,10 @@ class SnapmonSetup
 	def process_config
 		puts "Updating monitoring setup on Snapmon.com"
 		resp = http_post("http://#{SERVER}/host_monitors/create_from_config", {:data => @config.to_json, :api => @config['api-key']})
+		
+		if resp.strip != 'ok'
+			puts resp
+		end
 	end
 	
 	

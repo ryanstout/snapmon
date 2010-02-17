@@ -32,5 +32,13 @@ To automatically push your config settings add the following to your deploy.rb
 Each time you deploy (using Capistrano), your configuration will be updated on snapmon.com
 
 
+== Why A Plugin/Gem?
+
+Basically all this plugin does is setup your monitors on Snapmon.com from within a config file.  You may ask why not just go to the site and enter the config there.  The main benefit is that you can keep all of your data in your code base.  This lets anyone working on the project manage what should trigger an alert and who the alerts should go to.
+
+Having everything in the repository is nice, I would compare it to using a gem like whenever to manage cron jobs.  If its not in the repository, when something changes you will forget to update it.
+
+Also, the plugin/gem makes it really easy to get new projects monitored.
+
 
 Copyright (c) 2010 Ryan Stout, released under the MIT license
