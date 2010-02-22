@@ -13,6 +13,10 @@ Run the following in the command line in your projects root directory:
 
 The script will then walk you through setting up a snapmon.conf file, which will contain settings on who to notify when your application goes down.
 
+If you use capistrano, it will automatically update the settings in snapmon.yml whenever you deploy.  If not you can run:
+
+  rake snapmon:setup
+
 == As a gem:
 
 Place the following in your environment.rb file:
@@ -25,12 +29,24 @@ Then run:
   script/generate snapmon_config
 
 ==== Capistrano
-To automatically push your config settings add the following to your deploy.rb
+For gem users to automatically push your config settings add the following to your deploy.rb
 
   require 'snapmon/recipes'
 
 Each time you deploy (using Capistrano), your configuration will be updated on snapmon.com
 
+== Usage
+
+See config/snapmon.yml for details on configuring monitors.
+
+=== Enable/Disable
+
+If you are scheduling maintenance, you can disable the monitors for a time.  Simply run:
+
+  cap snapmon:disable
+  cap snapmon:enable
+
+You can also use rake if you are not using capistrano
 
 == Why A Plugin/Gem?
 
