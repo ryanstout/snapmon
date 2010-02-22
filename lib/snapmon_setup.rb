@@ -2,7 +2,7 @@ require 'active_support'
 require 'net/http'
 
 class SnapmonSetup
-	SERVER = '127.0.0.1:3000'
+	SERVER = 'www.snapmon.com'
 	
 	def initialize
 		load_config
