@@ -1,6 +1,17 @@
 desc "Sets up monitoring through Snapmon.com, requires snapmon.yml"
-task :setup_monitor do
-	require File.join(File.dirname(__FILE__), '../lib/', 'snapmon_setup')
+namespace :snapmon do
+	task :setup do
+		require File.join(File.dirname(__FILE__), '../lib/', 'snapmon_setup')
+		SnapmonSetup.new.upload_config
+	end
+	
+	task :enable do
+		require File.join(File.dirname(__FILE__), '../lib/', 'snapmon_setup')
+		SnapmonSetup.new.enable
+	end
 
-	SnapmonSetup.new
+	task :disable do
+		require File.join(File.dirname(__FILE__), '../lib/', 'snapmon_setup')
+		SnapmonSetup.new.disable
+	end
 end

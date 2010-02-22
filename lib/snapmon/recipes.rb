@@ -10,17 +10,26 @@
 configuration = Capistrano::Configuration.respond_to?(:instance) ? Capistrano::Configuration.instance(:must_exist) : Capistrano.configuration(:must_exist)
 
 configuration.load do
-	namespace :deploy do
-    
-    # on all deployments, notify RPM 
+	namespace :snapmon do
     desc "Sets up monitoring through Snapmon.com, requires snapmon.yml"
-    task :setup_monitor, :roles => :db, :except => {:no_release => true } do
+    task :setup, :roles => :db, :except => {:no_release => true } do
 			require File.join(File.dirname(__FILE__), '..', 'snapmon_setup')
+			SnapmonSetup.new.upload_config
+    end
 
-			SnapmonSetup.new
+    desc "Unpause all host monitors"
+    task :enable, :roles => :db, :except => {:no_release => true } do
+			require File.join(File.dirname(__FILE__), '..', 'snapmon_setup')
+			SnapmonSetup.new.enable
+    end
+
+    desc "Pause all host monitors"
+    task :disable, :roles => :db, :except => {:no_release => true } do
+			require File.join(File.dirname(__FILE__), '..', 'snapmon_setup')
+			SnapmonSetup.new.disable
     end
   end
 
-	after "deploy:restart", "deploy:setup_monitor"
+	after "deploy:restart", "snapmon:setup"
 	
 end
