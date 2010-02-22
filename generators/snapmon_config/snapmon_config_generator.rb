@@ -4,7 +4,7 @@ require 'active_support'
 
 
 class SnapmonConfigGenerator < Rails::Generator::Base
-	SERVER = '127.0.0.1:3000'
+	SERVER = 'www.snapmon.com'
 	
 	attr_accessor :contacts, :contacts_to_use, :api_key, :domain
 	
