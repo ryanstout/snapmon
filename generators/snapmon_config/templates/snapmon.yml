@@ -53,6 +53,10 @@ checks:
 
     # The notify section is required, there are 4 notification options, email, sms, gtalk, or aim.
     # Any option specified will be used as a contact option when the site goes down
+    # 
+    # Specific contact information is stored on http://www.snapmon.com/ and is shared between
+    # monitors.  You can add a new contact there, just be sure to use the same name (spelling counts)
+    # here.
     notify:
 <% contacts_to_use.each do |contact| %>
       - name: <%= contact[:name] %>
