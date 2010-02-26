@@ -1,6 +1,6 @@
 = SnapMon
 
-The snapmon plugin makes it easy to make sure your application is being monitored.  When you install the plugin, it will ask you a series of questions on who should be notified when the plugin goes down.  It will then setup a snapmon.yml file in /config.  You can further customize your monitoring from there.
+The snapmon plugin makes it easy to make sure your application is being monitored.  When you install the plugin, it will ask you a series of questions on who should be notified when your app goes down.  It will then setup a snapmon.yml file in /config.  You can further customize your monitoring from there.
 
 == Install
 
